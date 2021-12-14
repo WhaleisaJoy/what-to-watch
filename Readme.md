@@ -1,7 +1,6 @@
-# Личный проект «{{projectTitle}}»
+# Личный проект «What to Watch»
 
-* Студент: [{{userName}}]({{userProfile}}).
-* Наставник: `Неизвестно`.
+* Студент: [Мария Макарова](https://up.htmlacademy.ru/react/8/user/154481).
 
 ---
 
