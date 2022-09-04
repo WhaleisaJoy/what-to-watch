@@ -38,7 +38,7 @@ const films: Film[] = [
     'run_time': 99,
     'genre': 'Comedy',
     'released': 2000,
-    'is_favorite': false,
+    'is_favorite': true,
   },
   {
     'id': 1,
@@ -57,7 +57,7 @@ const films: Film[] = [
     'run_time': 99,
     'genre': 'Comedy',
     'released': 2000,
-    'is_favorite': false,
+    'is_favorite': true,
   },
   {
     'id': 2,

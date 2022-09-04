@@ -9,6 +9,8 @@ import PlayerPage from '../pages/player-page/player-page';
 import NotFoundPage from '../pages/not-found-page/not-found-page';
 import PrivateRoute from '../private-route/private-route';
 import { AuthorizationStatus } from '../../const';
+import { useState } from 'react';
+import { ActiceCard } from '../../types/types';
 
 type AppProps = {
   filmCardsCount: number;
@@ -17,6 +19,12 @@ type AppProps = {
 }
 
 function App({filmCardsCount, promoFilm, films}: AppProps): JSX.Element {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [activeCard, setActiveCard] = useState<ActiceCard>();
+  const handleCardMouseOver = (card: ActiceCard) => {
+    setActiveCard(card);
+  };
+
   return (
     <BrowserRouter>
       <Switch>
@@ -25,6 +33,7 @@ function App({filmCardsCount, promoFilm, films}: AppProps): JSX.Element {
             filmCardsCount = {filmCardsCount}
             promoFilm = {promoFilm}
             films = {films}
+            handleCardMouseOver={handleCardMouseOver}
           />
         </Route>
         <Route path="/login" exact>
@@ -33,8 +42,8 @@ function App({filmCardsCount, promoFilm, films}: AppProps): JSX.Element {
         <PrivateRoute
           exact
           path="/mylist"
-          render={() => <MyListPage />}
-          authorizationStatus={AuthorizationStatus.NoAuth}
+          render={() => <MyListPage films={films} handleCardMouseOver={handleCardMouseOver} />}
+          authorizationStatus={AuthorizationStatus.Auth}
         />
         <Route path="/films/:id" exact>
           <FilmPage

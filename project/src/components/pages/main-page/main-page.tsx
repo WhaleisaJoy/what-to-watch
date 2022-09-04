@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import type { Film } from '../../../types/film';
 import { ActiceCard } from '../../../types/types';
 import FilmCardList from '../../film-card-list/film-card-list';
@@ -11,15 +10,10 @@ type MainPageProps = {
   filmCardsCount: number;
   promoFilm: Film;
   films: Film[];
+  handleCardMouseOver: (card: ActiceCard) => void;
 }
 
-function MainPage({filmCardsCount, promoFilm, films}: MainPageProps): JSX.Element {
-  const [activeCard, setActiveCard] = useState<ActiceCard>();
-
-  const handleCardMouseOver = (card: ActiceCard) => {
-    setActiveCard(card);
-  };
-
+function MainPage({filmCardsCount, promoFilm, films, handleCardMouseOver}: MainPageProps): JSX.Element {
   return (
     <>
       <section className="film-card">
@@ -67,7 +61,7 @@ function MainPage({filmCardsCount, promoFilm, films}: MainPageProps): JSX.Elemen
       </section>
 
       <div className="page-content">
-        <section className="catalog" data-active-card={activeCard}>
+        <section className="catalog">
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
           <Genres />
