@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import type { film } from '../../../types/film';
 import FilmCard from '../../film-card/film-card';
 import Genres from '../../genres/genres';
@@ -30,7 +31,9 @@ function MainPage({filmCardsCount, promoFilm, films}: MainPageProps): JSX.Elemen
           <ul className="user-block">
             <li className="user-block__item">
               <div className="user-block__avatar">
-                <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+                <Link to="/mylist" title="/mylist">
+                  <img src="img/avatar.jpg" alt="User avatar" width="63" height="63" />
+                </Link>
               </div>
             </li>
             <li className="user-block__item">
