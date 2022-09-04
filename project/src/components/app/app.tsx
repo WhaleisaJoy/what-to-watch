@@ -6,6 +6,7 @@ import MyListPage from '../pages/my-list-page/my-list-page';
 import FilmPage from '../pages/film-page/film-page';
 import AddReviewPage from '../pages/add-review-page/add-review-page';
 import PlayerPage from '../pages/player-page/player-page';
+import NotFoundPage from '../pages/not-found-page/not-found-page';
 
 type AppProps = {
   filmCardsCount: number;
@@ -38,6 +39,9 @@ function App({filmCardsCount, promoFilm, films}: AppProps): JSX.Element {
         </Route>
         <Route path="/player/:id" exact>
           <PlayerPage />
+        </Route>
+        <Route>
+          <NotFoundPage />
         </Route>
       </Switch>
     </BrowserRouter>
