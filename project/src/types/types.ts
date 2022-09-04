@@ -1,0 +1,1 @@
+export type ActiceCard = number;

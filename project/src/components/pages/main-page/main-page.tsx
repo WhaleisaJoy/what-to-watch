@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { film } from '../../../types/film';
-import FilmCard from '../../film-card/film-card';
+import { ActiceCard } from '../../../types/types';
+import FilmCardList from '../../film-card-list/film-card-list';
 import Genres from '../../genres/genres';
 
 type MainPageProps = {
@@ -10,6 +12,12 @@ type MainPageProps = {
 }
 
 function MainPage({filmCardsCount, promoFilm, films}: MainPageProps): JSX.Element {
+  const [activeCard, setActiveCard] = useState<ActiceCard>();
+
+  const handleCardMouseOver = (card: ActiceCard) => {
+    setActiveCard(card);
+  };
+
   return (
     <>
       <section className="film-card">
@@ -75,23 +83,16 @@ function MainPage({filmCardsCount, promoFilm, films}: MainPageProps): JSX.Elemen
       </section>
 
       <div className="page-content">
-        <section className="catalog">
+        <section className="catalog" data-active-card={activeCard}>
           <h2 className="catalog__title visually-hidden">Catalog</h2>
 
           <Genres />
 
-          <div className="catalog__films-list">
-            {
-              new Array(filmCardsCount)
-                .fill('')
-                .map((_, index) => (
-                  <FilmCard
-                    key={films[index].name}
-                    film = {films[index]}
-                  />
-                ))
-            }
-          </div>
+          <FilmCardList
+            filmCardsCount={filmCardsCount}
+            films={films}
+            handleCardMouseOver={handleCardMouseOver}
+          />
 
           <div className="catalog__more">
             <button className="catalog__button" type="button">Show more</button>
