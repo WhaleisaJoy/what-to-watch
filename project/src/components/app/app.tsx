@@ -7,6 +7,8 @@ import FilmPage from '../pages/film-page/film-page';
 import AddReviewPage from '../pages/add-review-page/add-review-page';
 import PlayerPage from '../pages/player-page/player-page';
 import NotFoundPage from '../pages/not-found-page/not-found-page';
+import PrivateRoute from '../private-route/private-route';
+import { AuthorizationStatus } from '../../const';
 
 type AppProps = {
   filmCardsCount: number;
@@ -28,9 +30,12 @@ function App({filmCardsCount, promoFilm, films}: AppProps): JSX.Element {
         <Route path="/login" exact>
           <LoginPage />
         </Route>
-        <Route path="/mylist" exact>
-          <MyListPage />
-        </Route>
+        <PrivateRoute
+          exact
+          path="/mylist"
+          render={() => <MyListPage />}
+          authorizationStatus={AuthorizationStatus.NoAuth}
+        />
         <Route path="/films/:id" exact>
           <FilmPage />
         </Route>
