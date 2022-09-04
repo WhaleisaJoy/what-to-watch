@@ -1,4 +1,4 @@
-import type { film } from '../../types/film';
+import type { Film } from '../../types/film';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import MainPage from '../pages/main-page/main-page';
 import LoginPage from '../pages/login-page/login-page';
@@ -9,14 +9,22 @@ import PlayerPage from '../pages/player-page/player-page';
 import NotFoundPage from '../pages/not-found-page/not-found-page';
 import PrivateRoute from '../private-route/private-route';
 import { AuthorizationStatus } from '../../const';
+import { useState } from 'react';
+import { ActiceCard } from '../../types/types';
 
 type AppProps = {
   filmCardsCount: number;
-  promoFilm: film;
-  films: film[];
+  promoFilm: Film;
+  films: Film[];
 }
 
 function App({filmCardsCount, promoFilm, films}: AppProps): JSX.Element {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [activeCard, setActiveCard] = useState<ActiceCard>();
+  const handleCardMouseOver = (card: ActiceCard) => {
+    setActiveCard(card);
+  };
+
   return (
     <BrowserRouter>
       <Switch>
@@ -25,6 +33,7 @@ function App({filmCardsCount, promoFilm, films}: AppProps): JSX.Element {
             filmCardsCount = {filmCardsCount}
             promoFilm = {promoFilm}
             films = {films}
+            handleCardMouseOver={handleCardMouseOver}
           />
         </Route>
         <Route path="/login" exact>
@@ -33,11 +42,13 @@ function App({filmCardsCount, promoFilm, films}: AppProps): JSX.Element {
         <PrivateRoute
           exact
           path="/mylist"
-          render={() => <MyListPage />}
-          authorizationStatus={AuthorizationStatus.NoAuth}
+          render={() => <MyListPage films={films} handleCardMouseOver={handleCardMouseOver} />}
+          authorizationStatus={AuthorizationStatus.Auth}
         />
         <Route path="/films/:id" exact>
-          <FilmPage />
+          <FilmPage
+            films={films}
+          />
         </Route>
         <Route path="/films/:id/review" exact>
           <AddReviewPage />
