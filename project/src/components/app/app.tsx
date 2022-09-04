@@ -1,4 +1,4 @@
-import type { film } from '../../types/film';
+import type { Film } from '../../types/film';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import MainPage from '../pages/main-page/main-page';
 import LoginPage from '../pages/login-page/login-page';
@@ -12,8 +12,8 @@ import { AuthorizationStatus } from '../../const';
 
 type AppProps = {
   filmCardsCount: number;
-  promoFilm: film;
-  films: film[];
+  promoFilm: Film;
+  films: Film[];
 }
 
 function App({filmCardsCount, promoFilm, films}: AppProps): JSX.Element {
@@ -37,7 +37,9 @@ function App({filmCardsCount, promoFilm, films}: AppProps): JSX.Element {
           authorizationStatus={AuthorizationStatus.NoAuth}
         />
         <Route path="/films/:id" exact>
-          <FilmPage />
+          <FilmPage
+            films={films}
+          />
         </Route>
         <Route path="/films/:id/review" exact>
           <AddReviewPage />

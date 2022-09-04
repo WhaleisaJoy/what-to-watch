@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
-import type { film } from '../../types/film';
+import type { Film } from '../../types/film';
 import { ActiceCard } from '../../types/types';
 
 type FilmCardProps = {
-  film: film;
+  film: Film;
   handleCardMouseOver: (card: ActiceCard) => void;
 }
 

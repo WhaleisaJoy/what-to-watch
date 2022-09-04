@@ -1,10 +1,10 @@
-import { film } from '../../types/film';
+import { Film } from '../../types/film';
 import { ActiceCard } from '../../types/types';
 import FilmCard from '../film-card/film-card';
 
 type FilmCardListProps = {
   filmCardsCount: number;
-  films: film[];
+  films: Film[];
   handleCardMouseOver: (card: ActiceCard) => void;
 };
 

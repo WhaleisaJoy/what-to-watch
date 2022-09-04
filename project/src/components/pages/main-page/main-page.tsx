@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import type { film } from '../../../types/film';
+import type { Film } from '../../../types/film';
 import { ActiceCard } from '../../../types/types';
 import FilmCardList from '../../film-card-list/film-card-list';
 import Genres from '../../genres/genres';
 
 type MainPageProps = {
   filmCardsCount: number;
-  promoFilm: film;
-  films: film[];
+  promoFilm: Film;
+  films: Film[];
 }
 
 function MainPage({filmCardsCount, promoFilm, films}: MainPageProps): JSX.Element {
