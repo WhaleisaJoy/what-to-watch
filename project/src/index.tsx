@@ -4,7 +4,7 @@ import App from './components/app/app';
 import { films, promoFilm } from './mock/film';
 
 const Setting = {
-  FILM_CARDS_COUNT: 20,
+  FILM_CARDS_COUNT: 15,
   PROMO_FILM: promoFilm,
   FILMS: films,
 };

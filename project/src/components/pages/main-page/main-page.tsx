@@ -1,5 +1,5 @@
 import type { Film } from '../../../types/film';
-import { ActiceCard } from '../../../types/types';
+import { ActiveCard } from '../../../types/types';
 import FilmCardList from '../../film-card-list/film-card-list';
 import Footer from '../../footer/footer';
 import Genres from '../../genres/genres';
@@ -10,7 +10,7 @@ type MainPageProps = {
   filmCardsCount: number;
   promoFilm: Film;
   films: Film[];
-  handleCardMouseOver: (card: ActiceCard) => void;
+  handleCardMouseOver: (card: ActiveCard) => void;
 }
 
 function MainPage({filmCardsCount, promoFilm, films, handleCardMouseOver}: MainPageProps): JSX.Element {

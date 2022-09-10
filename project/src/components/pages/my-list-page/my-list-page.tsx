@@ -1,5 +1,5 @@
 import { Film } from '../../../types/film';
-import { ActiceCard } from '../../../types/types';
+import { ActiveCard } from '../../../types/types';
 import FilmCardList from '../../film-card-list/film-card-list';
 import Footer from '../../footer/footer';
 import Logo from '../../logo/logo';
@@ -7,7 +7,7 @@ import UserBlock from '../../user-block/user-block';
 
 type MyListPageProps = {
   films: Film[];
-  handleCardMouseOver: (card: ActiceCard) => void;
+  handleCardMouseOver: (card: ActiveCard) => void;
 };
 
 function MyListPage({films, handleCardMouseOver}: MyListPageProps): JSX.Element {

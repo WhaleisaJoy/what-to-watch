@@ -10,7 +10,7 @@ import NotFoundPage from '../pages/not-found-page/not-found-page';
 import PrivateRoute from '../private-route/private-route';
 import { AuthorizationStatus } from '../../const';
 import { useState } from 'react';
-import { ActiceCard } from '../../types/types';
+import { ActiveCard } from '../../types/types';
 
 type AppProps = {
   filmCardsCount: number;
@@ -20,8 +20,8 @@ type AppProps = {
 
 function App({filmCardsCount, promoFilm, films}: AppProps): JSX.Element {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  const [activeCard, setActiveCard] = useState<ActiceCard>();
-  const handleCardMouseOver = (card: ActiceCard) => {
+  const [activeCard, setActiveCard] = useState<ActiveCard>();
+  const handleCardMouseOver = (card: ActiveCard) => {
     setActiveCard(card);
   };
 
