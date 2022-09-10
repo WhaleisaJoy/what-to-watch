@@ -1,4 +1,4 @@
-export type ActiceCard = number;
+export type ActiveCard = number;
 
 export type RatingSettingsValue = {
   value: number,
