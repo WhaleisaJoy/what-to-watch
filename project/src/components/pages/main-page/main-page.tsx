@@ -1,3 +1,5 @@
+import { useSelector } from 'react-redux';
+import { getGenre } from '../../../store/selectors';
 import type { Film } from '../../../types/film';
 import { ActiveCard } from '../../../types/types';
 import FilmCardList from '../../film-card-list/film-card-list';
@@ -14,6 +16,10 @@ type MainPageProps = {
 }
 
 function MainPage({filmCardsCount, promoFilm, films, handleCardMouseOver}: MainPageProps): JSX.Element {
+  const genre = useSelector(getGenre);
+  // eslint-disable-next-line no-console
+  console.log(genre);
+
   return (
     <>
       <section className="film-card">
