@@ -2,19 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/app/app';
 import { films, promoFilm } from './mock/film';
+import { comments } from './mock/comment';
 
 const Setting = {
   FILM_CARDS_COUNT: 15,
-  PROMO_FILM: promoFilm,
-  FILMS: films,
 };
 
 ReactDOM.render(
   <React.StrictMode>
     <App
       filmCardsCount = {Setting.FILM_CARDS_COUNT}
-      promoFilm = { Setting.PROMO_FILM }
-      films = { Setting.FILMS }
+      promoFilm = {promoFilm}
+      films = {films}
+      comments = {comments}
     />
   </React.StrictMode>,
   document.getElementById('root'));
