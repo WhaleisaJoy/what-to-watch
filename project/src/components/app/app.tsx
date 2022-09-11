@@ -11,14 +11,16 @@ import PrivateRoute from '../private-route/private-route';
 import { AuthorizationStatus } from '../../const';
 import { useState } from 'react';
 import { ActiveCard } from '../../types/types';
+import { Comment } from '../../types/comment';
 
 type AppProps = {
   filmCardsCount: number;
   promoFilm: Film;
   films: Film[];
+  comments: Comment[];
 }
 
-function App({filmCardsCount, promoFilm, films}: AppProps): JSX.Element {
+function App({filmCardsCount, promoFilm, films, comments}: AppProps): JSX.Element {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [activeCard, setActiveCard] = useState<ActiveCard>();
   const handleCardMouseOver = (card: ActiveCard) => {
@@ -47,7 +49,9 @@ function App({filmCardsCount, promoFilm, films}: AppProps): JSX.Element {
         />
         <Route path="/films/:id" exact>
           <FilmPage
-            films={films}
+            films = {films}
+            comments = {comments}
+            handleCardMouseOver = {handleCardMouseOver}
           />
         </Route>
         <Route path="/films/:id/review" exact>

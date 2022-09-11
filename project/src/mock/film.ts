@@ -1,6 +1,6 @@
 import type { Film } from '../types/film';
 
-const promoFilm: Film = {
+export const promoFilm: Film = {
   'id': 19,
   'name': 'The Grand Budapest Hotel',
   'poster_image': 'img/the-grand-budapest-hotel-poster.jpg',
@@ -20,7 +20,7 @@ const promoFilm: Film = {
   'is_favorite': false,
 };
 
-const films: Film[] = [
+export const films: Film[] = [
   {
     'id': 0,
     'name': 'Fantastic Beasts: The Crimes of Grindelwald',
@@ -406,5 +406,4 @@ const films: Film[] = [
   },
 ];
 
-export { promoFilm, films };
 

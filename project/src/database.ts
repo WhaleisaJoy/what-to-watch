@@ -55,3 +55,9 @@ export const RatingSettings: RatingSettingsValue[] = [
     title: 'terrible',
   },
 ];
+
+export const FilmTabsName: string[] = [
+  'Overview',
+  'Details',
+  'Reviews',
+];
