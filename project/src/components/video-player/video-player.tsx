@@ -1,5 +1,4 @@
 import { useEffect, useRef } from 'react';
-// import { Link } from 'react-router-dom';
 import { Film } from '../../types/film';
 
 const TIMER_TIME = 1000;
