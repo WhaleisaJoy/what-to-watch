@@ -9,18 +9,20 @@ type FilmCardListProps = {
 };
 
 function FilmCardList({filmCardsCount, films, handleCardMouseOver}: FilmCardListProps): JSX.Element {
+  const filmsForRender = films.length > filmCardsCount
+    ? films.slice(0, filmCardsCount)
+    : films;
+
   return (
     <div className="catalog__films-list">
       {
-        new Array(filmCardsCount)
-          .fill('')
-          .map((_, index) => (
-            <FilmCard
-              key={films[index].name}
-              film = {films[index]}
-              handleCardMouseOver={handleCardMouseOver}
-            />
-          ))
+        filmsForRender.map((film) => (
+          <FilmCard
+            key={film.name}
+            film = {film}
+            handleCardMouseOver={handleCardMouseOver}
+          />
+        ))
       }
     </div>
   );

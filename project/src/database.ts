@@ -1,18 +1,5 @@
 import type { RatingSettingsValue } from './types/types';
 
-export const genres: string[] = [
-  'All genres',
-  'Comedies',
-  'Crime',
-  'Documentary',
-  'Dramas',
-  'Horror',
-  'Kids & Family',
-  'Romance',
-  'Sci-Fi',
-  'Thrillers',
-];
-
 export const RatingSettings: RatingSettingsValue[] = [
   {
     value: 10,

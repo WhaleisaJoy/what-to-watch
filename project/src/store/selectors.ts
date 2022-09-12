@@ -1,3 +1,5 @@
-import { StateType } from '../types/state';
+import type { StateType } from '../types/state';
 
-export const getGenre = (state: StateType):string => state.genre;
+export const getCurrentGenre = (state: StateType):string => state.currentGenre;
+
+export const getAllGenres = (state: StateType):string[] => state.allGenres;
