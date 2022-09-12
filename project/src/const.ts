@@ -16,3 +16,7 @@ export enum AuthorizationStatus {
 export const INITIAL_GENRE = 'All genres';
 
 export const MAX_GENRE_AMOUNT = 9;
+
+export const INITIAL_MAX_FILM_CARDS_AMOUNT = 8;
+
+export const RENDER_FILM_CARDS_STEP = 8;

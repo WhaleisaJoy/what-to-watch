@@ -1,5 +1,9 @@
-import { useSelector } from 'react-redux';
-import { getCurrentGenre } from '../../../store/selectors';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { resetFilmsAmountToRender } from '../../../store/reducer';
+// import { INITIAL_MAX_FILM_CARDS_AMOUNT } from '../../../const';
+// import { changeRenderedFilmCardsAmount } from '../../../store/reducer';
+import { getCurrentGenre, getrenderedFilmCardsAmount } from '../../../store/selectors';
 import type { Film } from '../../../types/film';
 import { ActiveCard } from '../../../types/types';
 import { getFilmsByGenre } from '../../../utils';
@@ -7,18 +11,29 @@ import FilmCardList from '../../film-card-list/film-card-list';
 import Footer from '../../footer/footer';
 import Genres from '../../genres/genres';
 import Logo from '../../logo/logo';
+import ShowMore from '../../show-more/show-more';
 import UserBlock from '../../user-block/user-block';
 
 type MainPageProps = {
-  filmCardsCount: number;
   promoFilm: Film;
   films: Film[];
   handleCardMouseOver: (card: ActiveCard) => void;
 }
 
-function MainPage({filmCardsCount, promoFilm, films, handleCardMouseOver}: MainPageProps): JSX.Element {
+function MainPage({promoFilm, films, handleCardMouseOver}: MainPageProps): JSX.Element {
+  const dispatch = useDispatch();
+
   const currentGenre = useSelector(getCurrentGenre);
   const filmsByCurrentGenre = getFilmsByGenre(films, currentGenre);
+
+  const renderedFilmCardsAmount = useSelector(getrenderedFilmCardsAmount);
+  const filmsForRender = filmsByCurrentGenre.slice(0, renderedFilmCardsAmount);
+
+  const isShowMore = filmsForRender.length < filmsByCurrentGenre.length;
+
+  useEffect(() => {
+    dispatch(resetFilmsAmountToRender());
+  }, [dispatch]);
 
   return (
     <>
@@ -73,14 +88,13 @@ function MainPage({filmCardsCount, promoFilm, films, handleCardMouseOver}: MainP
           <Genres />
 
           <FilmCardList
-            filmCardsCount={filmCardsCount}
-            films={filmsByCurrentGenre}
+            filmCardsAmount = {filmsForRender.length}
+            films={filmsForRender}
             handleCardMouseOver={handleCardMouseOver}
           />
 
-          <div className="catalog__more">
-            <button className="catalog__button" type="button">Show more</button>
-          </div>
+          { isShowMore && <ShowMore /> }
+
         </section>
 
         <Footer />

@@ -14,13 +14,12 @@ import { ActiveCard } from '../../types/types';
 import { Comment } from '../../types/comment';
 
 type AppProps = {
-  filmCardsCount: number;
   promoFilm: Film;
   films: Film[];
   comments: Comment[];
 }
 
-function App({filmCardsCount, promoFilm, films, comments}: AppProps): JSX.Element {
+function App({promoFilm, films, comments}: AppProps): JSX.Element {
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [activeCard, setActiveCard] = useState<ActiveCard>();
   const handleCardMouseOver = (card: ActiveCard) => {
@@ -32,7 +31,6 @@ function App({filmCardsCount, promoFilm, films, comments}: AppProps): JSX.Elemen
       <Switch>
         <Route path="/" exact>
           <MainPage
-            filmCardsCount = {filmCardsCount}
             promoFilm = {promoFilm}
             films = {films}
             handleCardMouseOver={handleCardMouseOver}

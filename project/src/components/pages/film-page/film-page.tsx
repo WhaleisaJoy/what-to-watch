@@ -105,7 +105,7 @@ function FilmPage({films, comments, handleCardMouseOver}: FilmPageProps): JSX.El
           <h2 className="catalog__title">More like this</h2>
 
           <FilmCardList
-            filmCardsCount={similarFilms.length}
+            filmCardsAmount={similarFilms.length}
             films={similarFilms}
             handleCardMouseOver={handleCardMouseOver}
           />

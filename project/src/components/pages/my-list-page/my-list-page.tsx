@@ -25,7 +25,7 @@ function MyListPage({films, handleCardMouseOver}: MyListPageProps): JSX.Element 
         <h2 className="catalog__title visually-hidden">Catalog</h2>
 
         <FilmCardList
-          filmCardsCount={favoriteFilms.length}
+          filmCardsAmount={favoriteFilms.length}
           films={favoriteFilms}
           handleCardMouseOver={handleCardMouseOver}
         />
