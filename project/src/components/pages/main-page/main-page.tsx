@@ -1,5 +1,8 @@
+import { useSelector } from 'react-redux';
+import { getCurrentGenre } from '../../../store/selectors';
 import type { Film } from '../../../types/film';
 import { ActiveCard } from '../../../types/types';
+import { getFilmsByGenre } from '../../../utils';
 import FilmCardList from '../../film-card-list/film-card-list';
 import Footer from '../../footer/footer';
 import Genres from '../../genres/genres';
@@ -14,6 +17,9 @@ type MainPageProps = {
 }
 
 function MainPage({filmCardsCount, promoFilm, films, handleCardMouseOver}: MainPageProps): JSX.Element {
+  const currentGenre = useSelector(getCurrentGenre);
+  const filmsByCurrentGenre = getFilmsByGenre(films, currentGenre);
+
   return (
     <>
       <section className="film-card">
@@ -68,7 +74,7 @@ function MainPage({filmCardsCount, promoFilm, films, handleCardMouseOver}: MainP
 
           <FilmCardList
             filmCardsCount={filmCardsCount}
-            films={films}
+            films={filmsByCurrentGenre}
             handleCardMouseOver={handleCardMouseOver}
           />
 

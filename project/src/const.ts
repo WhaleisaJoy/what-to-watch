@@ -12,3 +12,7 @@ export enum AuthorizationStatus {
   NoAuth = 'NO_AUTH',
   Unknown = 'UNKNOWN',
 }
+
+export const INITIAL_GENRE = 'All genres';
+
+export const MAX_GENRE_AMOUNT = 9;

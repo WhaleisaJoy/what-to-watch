@@ -1,20 +1,34 @@
-import { genres } from '../../database';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
+import { MAX_GENRE_AMOUNT } from '../../const';
+import { changeGenre } from '../../store/reducer';
+import { getAllGenres, getCurrentGenre } from '../../store/selectors';
 
 function Genres(): JSX.Element {
+  const currentGenre = useSelector(getCurrentGenre);
+  const allGenres = useSelector(getAllGenres).slice(0, MAX_GENRE_AMOUNT);
+
+  const dispatch = useDispatch();
+  const handleGenreChange = (genre: string) => dispatch(changeGenre(genre));
+
   return (
     <ul className="catalog__genres-list">
       {
-        new Array(genres.length).fill('').map((_, index) => {
-          const activeClass = genres[index] === 'All genres' ? 'catalog__genres-item--active' : '';
+        allGenres.map((genre) => {
+          const activeClass = genre === currentGenre ? 'catalog__genres-item--active' : '';
 
           return (
             <li
               className = {`catalog__genres-item ${activeClass}`}
-              key = {genres[index]}
+              key = {genre}
             >
-              <a href="#" className="catalog__genres-link">
-                {genres[index]}
-              </a>
+              <Link
+                to="#"
+                className="catalog__genres-link"
+                onClick={() => handleGenreChange(genre)}
+              >
+                {genre}
+              </Link>
             </li>
           );
         })
